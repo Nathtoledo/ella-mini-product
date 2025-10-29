@@ -17,7 +17,9 @@ from email_utils import enviar_email
 
 # carregar variáveis de ambiente (.env)
 load_dotenv()
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+ADMIN_PASSWORD = st.secrets.get("ADMIN_PASSWORD", os.getenv("ADMIN_PASSWORD"))
+SENDER_EMAIL = st.secrets.get("SENDER_EMAIL", os.getenv("SENDER_EMAIL"))
+SENDER_EMAIL_APP_PASSWORD = st.secrets.get("SENDER_EMAIL_APP_PASSWORD", os.getenv("SENDER_EMAIL_APP_PASSWORD"))
 
 # garantir que o banco/tabelas existem
 init_db()
